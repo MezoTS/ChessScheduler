@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessScheduler.Bot", "src\ChessScheduler.Bot\ChessScheduler.Bot.csproj", "{65508249-4D6D-44E0-9125-7ED778D73288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessScheduler.Core", "src\ChessScheduler.Core\ChessScheduler.Core.csproj", "{91699088-EDCA-4E4D-873B-F1656A95A9B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessScheduler.Core.Tests", "tests\ChessScheduler.Core.Tests\ChessScheduler.Core.Tests.csproj", "{E23C3A09-D960-4787-9B04-F1C9737E91DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65508249-4D6D-44E0-9125-7ED778D73288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65508249-4D6D-44E0-9125-7ED778D73288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65508249-4D6D-44E0-9125-7ED778D73288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65508249-4D6D-44E0-9125-7ED778D73288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06AED487-3D30-4D68-B2C9-28202836B1AF}
+	EndGlobalSection
+EndGlobal
