@@ -5,10 +5,6 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessScheduler.Bot", "src\ChessScheduler.Bot\ChessScheduler.Bot.csproj", "{65508249-4D6D-44E0-9125-7ED778D73288}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessScheduler.Core", "src\ChessScheduler.Core\ChessScheduler.Core.csproj", "{91699088-EDCA-4E4D-873B-F1656A95A9B8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessScheduler.Core.Tests", "tests\ChessScheduler.Core.Tests\ChessScheduler.Core.Tests.csproj", "{E23C3A09-D960-4787-9B04-F1C9737E91DA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB290D67-A7D7-467A-B944-7EBC644738E1}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -24,14 +20,6 @@ Global
 		{65508249-4D6D-44E0-9125-7ED778D73288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65508249-4D6D-44E0-9125-7ED778D73288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65508249-4D6D-44E0-9125-7ED778D73288}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91699088-EDCA-4E4D-873B-F1656A95A9B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E23C3A09-D960-4787-9B04-F1C9737E91DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

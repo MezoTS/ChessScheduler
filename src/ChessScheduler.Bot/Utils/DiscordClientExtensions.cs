@@ -1,30 +1,36 @@
 ﻿using ChessScheduler.Bot.Modules;
 using DSharpPlus;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.EventArgs;
 
 namespace ChessScheduler.Bot.Utils
 {
     public static class DiscordClientExtensions
     {
-        public static DiscordClient Configure(this DiscordClient client)
+        public static DiscordClient AddSlashCommands(this DiscordClient client, IServiceProvider services)
         {
-            var slash = client.UseSlashCommands();
+            var slashConfig = new SlashCommandsConfiguration { Services = services };
+            var slash = client.UseSlashCommands(slashConfig);
 
-            slash.RegisterCommands<HealthModule>();
-            slash.RegisterCommands<SetupModule>();
-
-            slash.SlashCommandErrored += HandleSlashCommandErrorAsync;
+            slash.RegisterCommands();
+            slash.AddExceptionHandling();
 
             return client;
         }
 
-        private static async Task HandleSlashCommandErrorAsync(
-            SlashCommandsExtension extension,
-            SlashCommandErrorEventArgs args)
+        private static void RegisterCommands(this SlashCommandsExtension slash)
         {
-            await args.Context.CreateResponseAsync(
-                $"Unable to proceed. Error: {args.Exception.Message}");
+            // Add new command modules here
+            slash.RegisterCommands<HealthModule>();
+            slash.RegisterCommands<PodiumModule>();
+        }
+
+        private static void AddExceptionHandling(this SlashCommandsExtension slash)
+        {
+            slash.SlashCommandErrored += async (e, args) =>
+            {
+                await args.Context.CreateResponseAsync(
+                    $"Unable to proceed. Error: {args.Exception.Message}\n{args.Exception.StackTrace}");
+            };
         }
     }
 }
