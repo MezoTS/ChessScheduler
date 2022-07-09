@@ -1,4 +1,4 @@
-﻿using ChessScheduler.Bot.Clients;
+﻿using ChessScheduler.Bot.Data.Clients;
 using ChessScheduler.Bot.Data;
 using ChessScheduler.Bot.Data.Repositories;
 using ChessScheduler.Bot.Handlers;

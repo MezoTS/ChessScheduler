@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ChessScheduler.Bot.Migrations
+namespace ChessScheduler.Bot.Data.Migrations
 {
     public partial class initial : Migration
     {
@@ -16,7 +16,7 @@ namespace ChessScheduler.Bot.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     PodiumChannel = table.Column<ulong>(type: "INTEGER", nullable: false),
                     ChampionRole = table.Column<ulong>(type: "INTEGER", nullable: false),
-                    LichessTeam = table.Column<string>(type: "varchar(50)", nullable: false)
+                    TeamName = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {

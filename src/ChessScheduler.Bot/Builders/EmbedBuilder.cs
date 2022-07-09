@@ -1,5 +1,5 @@
 ﻿using ChessScheduler.Bot.Commands;
-using ChessScheduler.Bot.DTOs;
+using ChessScheduler.Bot.Data.Clients.DTOs;
 using DSharpPlus.Entities;
 using System.Globalization;
 

@@ -1,5 +1,5 @@
 ﻿using ChessScheduler.Bot.Builders;
-using ChessScheduler.Bot.Clients;
+using ChessScheduler.Bot.Data.Clients;
 using ChessScheduler.Bot.Commands;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;

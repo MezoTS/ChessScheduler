@@ -2,18 +2,16 @@
 using ChessScheduler.Bot.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ChessScheduler.Bot.Migrations
+namespace ChessScheduler.Bot.Data.Migrations
 {
     [DbContext(typeof(SchedulerContext))]
-    [Migration("20220709183937_initial")]
-    partial class initial
+    partial class SchedulerContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
@@ -27,12 +25,12 @@ namespace ChessScheduler.Bot.Migrations
                     b.Property<ulong>("ChampionRole")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("LichessTeam")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
                     b.Property<ulong>("PodiumChannel")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("TeamName")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 

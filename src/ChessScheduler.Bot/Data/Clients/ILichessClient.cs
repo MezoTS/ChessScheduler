@@ -1,7 +1,7 @@
-﻿using ChessScheduler.Bot.DTOs;
+﻿using ChessScheduler.Bot.Data.Clients.DTOs;
 using Refit;
 
-namespace ChessScheduler.Bot.Clients
+namespace ChessScheduler.Bot.Data.Clients
 {
     [Headers("Authorization: Bearer")]
     public interface ILichessClient
