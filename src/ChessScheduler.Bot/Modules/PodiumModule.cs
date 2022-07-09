@@ -20,10 +20,11 @@ namespace ChessScheduler.Bot.Modules
         [SlashCommand("setup", "Configura as opções a serem usadas pelo comando `postar`")]
         public async Task SetupPodiumAsync(
             InteractionContext context,
+            [Option("time", "Nome do time no Lichess pertencente a este servidor")] string team,
             [Option("canal", "Canal onde serão enviadas as mensagens de pódio")] DiscordChannel channel,
             [Option("cargo", "Cargo concedido aos três primeiros colocados de cada torneio")] DiscordRole role)
         {
-            var command = new SetupPodiumCommand(role, channel, context);
+            var command = new SetupCommand(team, role, channel, context);
             await _setupHandler.Handle(command);
         }
 

@@ -6,7 +6,7 @@ namespace ChessScheduler.Bot.Data
 {
     public class SchedulerContext : DbContext
     {
-        public DbSet<Server>? Servers { get; set; }
+        public DbSet<Server> Servers => Set<Server>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -14,7 +14,7 @@ namespace ChessScheduler.Bot.Data
                 .HasKey(s => s.Id);
 
             modelBuilder.Entity<Server>()
-                .Property(s => s.LichessTeam)
+                .Property(s => s.TeamName)
                 .HasColumnType("varchar(50)");
         }
 

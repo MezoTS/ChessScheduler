@@ -1,4 +1,6 @@
 ﻿using ChessScheduler.Bot.Clients;
+using ChessScheduler.Bot.Data;
+using ChessScheduler.Bot.Data.Repositories;
 using ChessScheduler.Bot.Handlers;
 using DSharpPlus.Entities;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,9 +14,20 @@ namespace ChessScheduler.Bot.Utils
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services
+                .AddRepositories()
                 .AddRefitClients()
                 .AddCommandHandlers()
                 .AddTransient<DiscordWebhookBuilder>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            // Add new repositories here
+            services
+                .AddDbContext<SchedulerContext>()
+                .AddTransient<IServerRepository, ServerRepository>();
 
             return services;
         }

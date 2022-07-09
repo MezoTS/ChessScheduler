@@ -37,9 +37,27 @@ namespace ChessScheduler.Bot.Builders
         public static DiscordEmbed AfterSuccessAction()
         {
             // TODO: Add footer with info about who triggered the command
+
             return new DiscordEmbedBuilder
             {
                 Description = $"Ação realizada com sucesso!",
+            };
+        }
+
+        public static DiscordEmbed AfterFailedAction(Exception? exception = null)
+        {
+            // TODO: Add footer with info about who triggered the command
+
+            var message = string.Empty;
+
+            if(exception != null)
+            {
+                message = $"\nDetalhes: {exception.Message}\n{exception.StackTrace}";
+            }
+
+            return new DiscordEmbedBuilder
+            {
+                Description = $"Falha ao realizar ação.{message}",
             };
         }
     }
