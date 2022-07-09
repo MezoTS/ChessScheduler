@@ -2,29 +2,30 @@
 using ChessScheduler.Bot.Commands;
 using ChessScheduler.Bot.Utils;
 using DSharpPlus.Entities;
+using DSharpPlus.SlashCommands;
 
 namespace ChessScheduler.Bot.Handlers
 {
     public class SendPodiumCommandHandler
     {
+        private readonly DiscordWebhookBuilder _webhook;
         private readonly ILichessClient _lichessClient;
 
-        public SendPodiumCommandHandler(ILichessClient lichessClient)
+        public SendPodiumCommandHandler(DiscordWebhookBuilder webhook, ILichessClient lichessClient)
         {
+            _webhook = webhook;
             _lichessClient = lichessClient;
         }
 
-        public async Task<DiscordEmbed> Handle(SendPodiumCommand command)
+        public async Task Handle(InteractionContext context, SendPodiumCommand command)
         {
-            // Get tournament id
+            await context.DeferAsync();
+
             var tournamentId = command.TournamentLink.Split('/').Last();
-
-            // Get tournament data
             var swissInfo = await _lichessClient.GetSwissInfoAsync(tournamentId);
-
-            // Build embed
             var embed = swissInfo.ToDiscordEmbed();
-            return embed;
+
+            await context.EditResponseAsync(_webhook.AddEmbed(embed));
         }
     }
 }
