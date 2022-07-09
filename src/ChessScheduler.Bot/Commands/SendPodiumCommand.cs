@@ -5,14 +5,16 @@ namespace ChessScheduler.Bot.Commands
     public class SendPodiumCommand
     {
         public SendPodiumCommand(
-            string link,
+            string tournamentLink,
+            string imageLink,
             DiscordChannel channel,
             DiscordUser first,
             DiscordUser second,
             DiscordUser third,
             DiscordRole role)
         {
-            Link = link;
+            TournamentLink = tournamentLink;
+            ImageLink = imageLink;
             Channel = channel;
             First = (DiscordMember)first;
             Second = (DiscordMember)second;
@@ -20,7 +22,8 @@ namespace ChessScheduler.Bot.Commands
             Role = role;
         }
 
-        public string Link { get; set; }
+        public string TournamentLink { get; set; }
+        public string ImageLink { get; set; }
         public DiscordChannel Channel { get; set; }
         public DiscordMember First { get; set; }
         public DiscordMember Second { get; set; }

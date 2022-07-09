@@ -22,11 +22,11 @@ namespace ChessScheduler.Bot.Handlers
         {
             await context.DeferAsync();
 
-            var tournamentId = command.Link.Split('/').Last();
+            var tournamentId = command.TournamentLink.Split('/').Last();
             var swissInfo = await _lichessClient.GetSwissInfoAsync(tournamentId);
-            var embed = BuildEmbed(swissInfo, command);
+            var podiumEmbed = BuildPodiumEmbed(swissInfo, command);
 
-            await command.Channel.SendMessageAsync(embed);
+            var podiumMessage = await command.Channel.SendMessageAsync(podiumEmbed);
 
             command.Champions.ForEach(champion =>
             {
@@ -34,24 +34,36 @@ namespace ChessScheduler.Bot.Handlers
                 champion.GrantRoleAsync(command.Role);
             });
 
-            // TODO: Respond with embed
-            await context.DeleteResponseAsync();
+            var responseEmbed = BuildResponseEmbed(podiumMessage);
+            await context.EditResponseAsync(_webhook.AddEmbed(responseEmbed));
         }
 
-        private static DiscordEmbed BuildEmbed(GetSwissInfoResponse swiss, SendPodiumCommand command)
+        private static DiscordEmbed BuildPodiumEmbed(GetSwissInfoResponse swiss, SendPodiumCommand command)
         {
             var embed = new DiscordEmbedBuilder
             {
                 Title = $":trophy: **Pódio: {swiss.Name}** :trophy:",
                 Description =
                     $":calendar: **Data**: {swiss.StartsAt.ToString(@"d \de MMMM \de yyyy", new CultureInfo("PT-br"))}\n" +
-                    $":computer: **Link**: {command.Link}\n" +
+                    $":computer: **Link**: {command.TournamentLink}\n" +
                     $"\n" +
                     $":first_place: <@{command.First.Id}>\n" +
                     $":second_place: <@{command.Second.Id}>\n" +
                     $":third_place: <@{command.Third.Id}>",
                 Color = new DiscordColor("#FFC300"),
-                ImageUrl = "https://imgur.com/VHdG3sl.png",
+                ImageUrl = command.ImageLink,
+            };
+
+            return embed;
+        }
+
+        private static DiscordEmbed BuildResponseEmbed(DiscordMessage podiumMessage)
+        {
+            var embed = new DiscordEmbedBuilder
+            {
+                Description = 
+                    $"Pódio enviado com sucesso!\n" +
+                    $"[**Ir para a mensagem**]({podiumMessage.JumpLink})",
             };
 
             return embed;
