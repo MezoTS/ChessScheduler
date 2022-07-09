@@ -6,5 +6,20 @@
         public ulong PodiumChannel { get; set; }
         public ulong ChampionRole { get; set; }
         public string TeamName { get; set; } = string.Empty;
+
+        public void Update(Server other)
+        {
+            if (other.Id != Id)
+                return;
+
+            if (other.PodiumChannel != PodiumChannel)
+                PodiumChannel = other.PodiumChannel;
+
+            if (other.ChampionRole != ChampionRole)
+                ChampionRole = other.ChampionRole;
+
+            if (other.TeamName != TeamName)
+                TeamName = other.TeamName;
+        }
     }
 }

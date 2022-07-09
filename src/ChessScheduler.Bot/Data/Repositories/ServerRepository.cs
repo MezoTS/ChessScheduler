@@ -18,16 +18,16 @@ namespace ChessScheduler.Bot.Data.Repositories
 
         public async Task<Server> AddOptionsAsync(Server server)
         {
-            var serverExists = _context.Servers.Any(s => s.Id == server.Id);
+            var sourceServer = _context.Servers.Find(server.Id);
 
-            if (serverExists)
+            if (sourceServer == null)
             {
                 _context.Servers.Add(server);
             }
             else
             {
+                sourceServer.Update(server);
                 _context.Servers.Update(server);
-                
             }
 
             await _context.SaveChangesAsync();
