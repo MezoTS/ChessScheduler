@@ -27,7 +27,6 @@ namespace ChessScheduler.Bot.Data.Repositories
             else
             {
                 sourceServer.Update(server);
-                _context.Servers.Update(server);
             }
 
             await _context.SaveChangesAsync();
