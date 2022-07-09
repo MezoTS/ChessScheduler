@@ -8,7 +8,7 @@ namespace ChessScheduler.Bot.Utils
 
         private static string BotToken =>
             Environment.GetEnvironmentVariable(
-                "CHESS_SCHEDULER",
+                "CHESS_SCHEDULER_DISCORD_TOKEN",
                 EnvironmentVariableTarget.Machine) ??
             throw new ArgumentException("Missing bot token");
 
@@ -17,6 +17,12 @@ namespace ChessScheduler.Bot.Utils
                 "LICHESS_TOKEN",
                 EnvironmentVariableTarget.Machine) ??
             throw new ArgumentException("Missing Lichess token");
+
+        public static string DbConnection =>
+            Environment.GetEnvironmentVariable(
+                "CHESS_SCHEDULER_DB",
+                EnvironmentVariableTarget.Machine) ??
+            "Data Source=scheduler.db;";
 
         public static DiscordConfiguration BotConfig => new()
         {

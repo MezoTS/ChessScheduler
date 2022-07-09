@@ -5,16 +5,29 @@ using DSharpPlus.SlashCommands;
 
 namespace ChessScheduler.Bot.Modules
 {
+    [SlashCommandGroup("podio", "Comandos relacionados a pódios de torneios finalizados")]
     public class PodiumModule : ApplicationCommandModule
     {
-        private readonly SendPodiumCommandHandler _handler;
+        private readonly SendPodiumCommandHandler _sendHandler;
+        private readonly SetupPodiumCommandHandler _setupHandler;
 
-        public PodiumModule(SendPodiumCommandHandler handler)
+        public PodiumModule(SendPodiumCommandHandler sendHandler, SetupPodiumCommandHandler setupHandler)
         {
-            _handler = handler;
+            _sendHandler = sendHandler;
+            _setupHandler = setupHandler;
         }
 
-        [SlashCommand("podio", "Posta o pódio de um torneio neste canal")]
+        [SlashCommand("setup", "Configura as opções a serem usadas pelo comando `postar`")]
+        public async Task SetupPodiumAsync(
+            InteractionContext context,
+            [Option("canal", "Canal onde serão enviadas as mensagens de pódio")] DiscordChannel channel,
+            [Option("cargo", "Cargo concedido aos três primeiros colocados de cada torneio")] DiscordRole role)
+        {
+            var command = new SetupPodiumCommand(role, channel, context);
+            await _setupHandler.Handle(command);
+        }
+
+        [SlashCommand("postar", "Posta o pódio de um torneio em um canal, e concede o cargo selecionado aos campeões")]
         public async Task SendPodiumAsync(
             InteractionContext context,
             [Option("torneio", "Link do torneio")] string tournamentLink,
@@ -26,7 +39,7 @@ namespace ChessScheduler.Bot.Modules
             [Option("cargo", "Cargo a ser recebido pelos campeões")] DiscordRole role)
         {
             var command = new SendPodiumCommand(tournamentLink, imageLink, channel, first, second, third, role);
-            await _handler.Handle(context, command);
+            await _sendHandler.Handle(context, command);
         }
     }
 }

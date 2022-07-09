@@ -23,6 +23,7 @@ namespace ChessScheduler.Bot.Utils
         {
             // Add new command-handlers here
             services.AddTransient<SendPodiumCommandHandler>();
+            services.AddTransient<SetupPodiumCommandHandler>();
 
             return services;
         }
