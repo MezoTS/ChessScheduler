@@ -7,7 +7,7 @@
         public ulong ChampionRole { get; set; }
         public string TeamName { get; set; } = string.Empty;
 
-        public void Update(Server other)
+        public void UpdateWith(Server other)
         {
             if (other.Id != Id)
                 return;
