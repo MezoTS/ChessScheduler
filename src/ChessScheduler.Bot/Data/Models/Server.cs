@@ -21,5 +21,11 @@
             if (other.TeamName != TeamName)
                 TeamName = other.TeamName;
         }
+
+        public bool IsSettedUp => 
+            Id != default &&
+            PodiumChannel != default &&
+            ChampionRole != default &&
+            TeamName != string.Empty;
     }
 }

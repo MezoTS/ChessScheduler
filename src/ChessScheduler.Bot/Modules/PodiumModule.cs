@@ -31,15 +31,12 @@ namespace ChessScheduler.Bot.Modules
         [SlashCommand("postar", "Posta o pódio de um torneio em um canal, e concede o cargo selecionado aos campeões")]
         public async Task SendPodiumAsync(
             InteractionContext context,
-            [Option("torneio", "Link do torneio")] string tournamentLink,
             [Option("imagem", "Link da imagem")] string imageLink,
-            [Option("canal", "Canal onde será postado o pódio")] DiscordChannel channel,
             [Option("campeao", "Campeão do torneio")] DiscordUser first,
             [Option("vice", "Vice-campeão do torneio")] DiscordUser second,
-            [Option("terceiro", "Terceiro colocado do torneio")] DiscordUser third,
-            [Option("cargo", "Cargo a ser recebido pelos campeões")] DiscordRole role)
+            [Option("terceiro", "Terceiro colocado do torneio")] DiscordUser third)
         {
-            var command = new SendPodiumCommand(tournamentLink, imageLink, channel, first, second, third, role);
+            var command = new SendPodiumCommand(imageLink, first, second, third);
             await _sendHandler.Handle(context, command);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using ChessScheduler.Bot.Commands;
 using ChessScheduler.Bot.Data.Clients.DTOs;
+using ChessScheduler.Bot.Data.Models;
 using DSharpPlus.Entities;
 using System.Globalization;
 
@@ -7,20 +8,20 @@ namespace ChessScheduler.Bot.Builders
 {
     public class EmbedBuilder
     {
-        public static DiscordEmbed FromSwissPodium(GetSwissInfoResponse tournament, SendPodiumCommand command)
+        public static DiscordEmbed FromSwissResult(SwissResult swissResult)
         {
             return new DiscordEmbedBuilder
             {
-                Title = $":trophy: **Pódio: {tournament.Name}** :trophy:",
+                Title = $":trophy: **Pódio: {swissResult.Name}** :trophy:",
                 Description =
-                    $":calendar: **Data**: {tournament.StartsAt.ToString(@"d \de MMMM \de yyyy", new CultureInfo("PT-br"))}\n" +
-                    $":computer: **Link**: {command.TournamentLink}\n" +
+                    $":calendar: **Data**: {swissResult.FormattedDate}\n" +
+                    $":computer: **Link**: {swissResult.Link}\n" +
                     $"\n" +
-                    $":first_place: <@{command.First.Id}>\n" +
-                    $":second_place: <@{command.Second.Id}>\n" +
-                    $":third_place: <@{command.Third.Id}>",
+                    $":first_place: <@{swissResult.First}>\n" +
+                    $":second_place: <@{swissResult.Second}>\n" +
+                    $":third_place: <@{swissResult.Third}>",
                 Color = new DiscordColor("#FFC300"),
-                ImageUrl = command.ImageLink,
+                ImageUrl = swissResult.Image,
             };
         }
 

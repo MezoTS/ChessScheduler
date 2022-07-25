@@ -5,6 +5,8 @@ namespace ChessScheduler.Bot.Data.Repositories
     public interface IServerRepository
     {
         Task<Server> AddOptionsAsync(Server server);
+
+        Task<Server?> GetServerAsync(ulong id);
     }
 
     public class ServerRepository : IServerRepository
@@ -31,6 +33,11 @@ namespace ChessScheduler.Bot.Data.Repositories
 
             await _context.SaveChangesAsync();
             return server;
+        }
+
+        public async Task<Server?> GetServerAsync(ulong id)
+        {
+            return await _context.Servers.FindAsync(id);
         }
     }
 }
