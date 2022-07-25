@@ -74,7 +74,7 @@ namespace ChessScheduler.Bot.Handlers
             var lichessResult = await _lichessClient.GetSwissPodiumAsync(lichessSwiss.Id);
 
             // Build own model
-            var swissResult = SwissResult.FromLichess(lichessSwiss, lichessResult, command.ImageLink);
+            var swissResult = SwissResult.FromLichess(lichessSwiss, command.Champions, command.ImageLink);
 
             // Build embed
             var podiumEmbed = EmbedBuilder.FromSwissResult(swissResult);

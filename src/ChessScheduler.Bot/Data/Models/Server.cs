@@ -1,4 +1,6 @@
-﻿namespace ChessScheduler.Bot.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ChessScheduler.Bot.Data.Models
 {
     public class Server
     {
@@ -22,6 +24,7 @@
                 TeamName = other.TeamName;
         }
 
+        [NotMapped]
         public bool IsSettedUp => 
             Id != default &&
             PodiumChannel != default &&

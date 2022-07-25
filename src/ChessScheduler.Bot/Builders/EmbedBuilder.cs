@@ -1,8 +1,5 @@
-﻿using ChessScheduler.Bot.Commands;
-using ChessScheduler.Bot.Data.Clients.DTOs;
-using ChessScheduler.Bot.Data.Models;
+﻿using ChessScheduler.Bot.Data.Models;
 using DSharpPlus.Entities;
-using System.Globalization;
 
 namespace ChessScheduler.Bot.Builders
 {
@@ -17,9 +14,9 @@ namespace ChessScheduler.Bot.Builders
                     $":calendar: **Data**: {swissResult.FormattedDate}\n" +
                     $":computer: **Link**: {swissResult.Link}\n" +
                     $"\n" +
-                    $":first_place: <@{swissResult.First}>\n" +
-                    $":second_place: <@{swissResult.Second}>\n" +
-                    $":third_place: <@{swissResult.Third}>",
+                    $":first_place: <@{swissResult.First.Id}>\n" +
+                    $":second_place: <@{swissResult.Second.Id}>\n" +
+                    $":third_place: <@{swissResult.Third.Id}>",
                 Color = new DiscordColor("#FFC300"),
                 ImageUrl = swissResult.Image,
             };
@@ -51,7 +48,7 @@ namespace ChessScheduler.Bot.Builders
 
             var message = string.Empty;
 
-            if(exception != null)
+            if (exception != null)
             {
                 message = $"\nDetalhes: {exception.Message}\n{exception.StackTrace}";
             }

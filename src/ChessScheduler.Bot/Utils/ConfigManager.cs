@@ -22,7 +22,7 @@ namespace ChessScheduler.Bot.Utils
             Environment.GetEnvironmentVariable(
                 "CHESS_SCHEDULER_DB",
                 EnvironmentVariableTarget.Machine) ??
-            "Data Source=scheduler.db;";
+            "Data Source=C:\\sqlite\\scheduler.db";
 
         public static DiscordConfiguration BotConfig => new()
         {
